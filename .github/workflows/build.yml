@@ -13,3 +13,9 @@ jobs:
     steps:
       - name: Print Hello World
         run: echo "Hello, World from Repo B!"
+
+      - name: Trigger Workflow in Repo A using GitHub CLI
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh workflow run triggered_by_repo_b.yml -R cloudcat-digital/repo-a
